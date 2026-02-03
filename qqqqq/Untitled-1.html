@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>การ์ดวันเกิดแพนกิ้นนนน 🎂</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* ===== CARD ===== */
+.card {
+  width: 320px;
+  height: 450px;
+  perspective: 1200px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* 🔥 ใช้ class flip แทน hover */
+.card.flip .content {
+  transform: rotateY(180deg);
+}
+
+/* ===== FRONT / BACK ===== */
+.front, .back {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ===== FRONT ===== */
+.front {
+  background: url("cake.jpg") center / cover no-repeat;
+}
+
+.front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.front-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.badge {
+  background: rgba(0,0,0,0.6);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.description {
+  background: rgba(0,0,0,0.6);
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+/* ===== BACK ===== */
+.back {
+  transform: rotateY(180deg);
+  background: url("back.jpg") center / cover no-repeat;
+}
+
+.back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.15),
+    transparent
+  );
+}
+
+.back-content {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.back-content h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.name {
+  margin-top: 8px;
+  font-size: 26px;
+  letter-spacing: 3px;
+  color: #ff9acb;
+  text-shadow: 0 0 12px rgba(255,154,203,0.5);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+  .card {
+    width: 280px;
+    height: 400px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <div class="content">
+
+    <div class="front">
+      <div class="front-content">
+        <div class="badge">Birthday Card 🎂</div>
+        <div class="description">
+          แตะการ์ดเพื่อเปิดคำอวยพร 💖
+        </div>
+      </div>
+    </div>
+
+    <div class="back">
+      <div class="back-content">
+        <h2>Happy Birthday</h2>
+        <div class="name">แพนกิ้นนนน</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🔥 JavaScript สำหรับมือถือ -->
+<script>
+  const card = document.getElementById("card");
+  card.addEventListener("click", () => {
+    card.classList.toggle("flip");
+  });
+</script>
+
+</body>
+</html>

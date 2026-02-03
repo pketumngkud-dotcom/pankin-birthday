@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+/* ขนาดการ์ด */
+.card {
+  width: 320px;
+  height: 450px;
+  perspective: 1000px;
+}
+
+/* กล่องหมุน */
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+}
+
+/* หน้า-หลัง */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: #151515;
+  color: white;
+}
+
+/* ---------- FRONT ---------- */
+.front {
+  transform: rotateY(180deg);
+}
+
+.front-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.badge {
+  background: rgba(0,0,0,0.6);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.description {
+  background: rgba(0,0,0,0.65);
+  padding: 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+}
+
+.card-footer {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* ---------- รูป (ใช้ร่วมกัน หน้า/หลัง) ---------- */
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* รูปเค้กด้านหน้า */
+.cake-img {
+  background-image: url("cake.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* รูปด้านหลัง */
+.back-img {
+  background-image: url("back.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+}
+
+/* ---------- BACK ---------- */
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* กล่องข้อความด้านหลัง */
+.back-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  height: 90%;
+  background: rgba(0,0,0,0.55);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.name {
+  font-size: 24px;
+  color: #ff99cc;
+  letter-spacing: 2px;
+}
+
+/* มือถือ */
+@media (max-width: 480px) {
+  .card {
+    width: 280px;
+    height: 400px;
+  }
+}
